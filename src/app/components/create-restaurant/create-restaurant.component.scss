@@ -1,0 +1,30 @@
+.create-res {
+    & .h1 {
+        margin-bottom: 24px;
+    }
+    & .ele-container {
+        margin-bottom: 16px;
+        & .label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        & .form-input {
+            width: 100%;
+            outline: none;
+        }
+        & textarea {
+            resize: none;
+            width: 100%;
+            outline: none;
+            padding: 8px;
+        }
+        & .primary-btn {
+            margin-bottom: 8px;
+        }
+        & input.disabled {
+            margin-right: 8px;
+            display: inline-block;
+            width: unset;
+        }
+    }
+}

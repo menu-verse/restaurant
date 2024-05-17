@@ -1,0 +1,19 @@
+.lunch-item {
+    &__content {
+        width: 750px;
+        & .top-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        & .input-section {
+            margin-top: 16px;
+        }
+        & .btn-section {
+            margin-top: 16px;
+        }
+        & .menu-items-content {
+            margin-top: 32px;
+        }
+    }
+}

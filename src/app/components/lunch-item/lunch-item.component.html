@@ -1,0 +1,34 @@
+<div class="component lunch-item">
+    <div class="lunch-item__content">
+        <div class="top-section">
+            <div class="checkbox-container">
+                <label for="closed">Closed on this day?</label>
+                <input  [(ngModel)]="isClosed"  (change)="handleClosed()" type="checkbox" id="closed" />
+            </div>
+            <button class="primary-btn">
+                SAVE
+            </button>
+        </div>
+        <div class="input-section">
+            <div class="input-container">
+                <input [disabled]="isClosed" class="input" name="openingTime" id="openingTime" placeholder="Open Time" />
+            </div>
+            <div class="input-container">
+                <input [disabled]="isClosed" class="input" name="closingTime" id="closingTime" placeholder="Close Time" />
+            </div>
+            <div class="input-container">
+                <input [disabled]="isClosed" class="input" name="lunchTime" id="lunchTime" placeholder="Lunch Time" />
+            </div>
+            <div class="menu-items-content">
+                <p class="desc"> LUNCH ITEMS </p>
+                <div *ngFor="let item of items" class="menu-items">
+                    <app-menu-item></app-menu-item>
+                </div>
+            </div>
+            <div class="btn-section">
+                <button [disabled]="isClosed" class="link-btn" (click)="handleAddItem()">Add Lunch Item</button>
+            </div>
+
+        </div>
+    </div>
+</div>

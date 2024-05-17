@@ -1,0 +1,74 @@
+<div class="component create-res">
+    <div class="container">
+        <h1 class="h1">
+            Create Your Restaurant
+        </h1>
+        <form class="form">
+            <div class="ele-container">
+                <label for="logo" class="small-text label">Choose a Logo for your restaurant:</label>
+                <input type="file" id="logo" name="logo" accept="image/png, image/jpeg" />
+            </div>
+            <div class="ele-container">
+                <label for="cover" class="small-text label">Choose a cover photo for your restaurant:</label>
+                <input type="file" id="cover" name="cover" accept="image/png, image/jpeg" />
+            </div>
+            <div class="ele-container">
+                <label for="address" class="small-text label">Address:</label>
+                <textarea id="address" rows="6"></textarea>
+            </div>
+            <div class="ele-container">
+                <label class="small-text label">Click on this button to fill google maps location:</label>
+                <button class="primary-btn">Maps Location</button>
+                <input class="disabled" disabled value="lat" />
+                <input class="disabled" disabled value="lon" />
+            </div>
+            <div class="ele-container">
+                <label class="small-text label" for="phone">Phone Number:</label>
+                <div class="input-container">
+                    <input class="form-input" type="number" id="phone" /> 
+                </div>
+            </div>
+            <div class="ele-container">
+                <label class="small-text label" for="email">Email Address:</label>
+                <div class="input-container">
+                    <input class="form-input" type="email" id="email" /> 
+                </div>
+            </div>
+            <div class="ele-container">
+                <label class="small-text label" for="email">Will you have lunch menu:</label>
+                <div class="radio-container">
+                    <div class="radio-sec">
+                        <input type="radio" id="lunch_yes" name="lunch_menu" value="YES">
+                        <label for="lunch_yes">YES</label>
+                    </div>
+                    <div class="radio-sec">
+                        <input type="radio" id="lunch_no" name="lunch_menu" value="NO">
+                        <label for="lunch_no">NO</label>
+                    </div>
+                </div>
+            </div>
+            <div class="ele-container">
+                <label class="small-text label" for="email">Will you have Dining menu:</label>
+                <div class="radio-container">
+                    <div class="radio-sec">
+                        <input type="radio" id="dining_yes" name="dining_menu" value="YES">
+                        <label for="dining_yes">YES</label>
+                    </div>
+                    <div class="radio-sec">
+                        <input type="radio" id="dining_no" name="dining_menu" value="NO">
+                        <label for="dining_no">NO</label>
+                    </div>
+                </div>
+            </div>
+            <div class="ele-container">
+                <label class="small-text label" for="genre">Food Genre:</label>
+                <div class="input-container">
+                    <input class="form-input" type="text" id="genre" placeholder="Eg: Indian, Continental, Italin" /> 
+                </div>
+            </div>
+            <div class="ele-container">
+                <button class="primary-btn">Next <i class="fas fa-solid fa-angle-right"></i></button>
+            </div>
+        </form>
+    </div>
+</div>

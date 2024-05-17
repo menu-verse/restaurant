@@ -1,0 +1,13 @@
+.ord-menu {
+    width: 750px;
+    & .top-section {
+        display: flex;
+        justify-content: flex-end;
+    }
+    & .menu-section {
+        margin-top: 32px;
+    }
+    & .btn-section {
+        margin-top: 32px;
+    }
+}

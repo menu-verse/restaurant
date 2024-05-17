@@ -1,0 +1,92 @@
+.form-container {
+    height: 100vh;
+    width: 80%;
+    margin: auto;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.login-container {
+    width: 50%;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+    transition: all 500ms ease;
+}
+
+
+.input-container {
+    margin-top: 10px;
+    width: 100%;
+    border-radius: 5px;
+    border: 2px solid var(--color-border);
+    display: flex;
+    align-items: center;
+}
+
+input {
+    border: none;
+    margin-left: 5px;
+    outline: none;
+    font-size: 1.6rem;
+    padding: 6px 12px;
+}
+
+.account-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.small-text {
+    text-align: center;
+}
+
+.placeholder-banner {
+    width: 50%;
+    height: 100%;
+    position:absolute;
+    right:0;
+    transition: all 500ms ease;
+    z-index:4;
+}
+
+.social-logins {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.social-login {
+    height: 40px;
+    aspect-ratio: 1/1;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:5px;
+    cursor: pointer;
+    transition:transform 500ms ease;
+    &:hover{
+        transform:scale(1.1);
+    }
+}
+.signup-text{
+    margin-top: 5px;
+}
+
+.banner {
+    width: 100%;
+    height: inherit;
+    object-fit: cover;
+    transition: transform 500ms ease;
+}

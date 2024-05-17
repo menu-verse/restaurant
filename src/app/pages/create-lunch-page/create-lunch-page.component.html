@@ -1,0 +1,21 @@
+<div class="page lunch-page">
+  <h1 class="h1">
+    Create your lunch menu
+  </h1>
+  <p class="desc">
+    Pick the week. If no week is selected, it will be displayed same for all the weeks
+  </p>
+  <div class="date-picker">
+    <mat-form-field>
+      <mat-label>Select week</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let week of weeks" [value]="week.value">
+            {{week.label}}
+        </mat-option>
+    </mat-select>
+    </mat-form-field>
+  </div>
+  <main class="main">
+    <app-create-lunch></app-create-lunch>
+  </main>
+</div>
