@@ -1,22 +1,62 @@
 <div class="component login-cmp">
     <div class="form-container">
-        <form class="login-container" id="login-container">
+        <div *ngIf="inProgress" class="loader">
+            <mat-progress-spinner
+                class="example-margin"
+                color="primary"
+                mode="indeterminate">
+            </mat-progress-spinner>
+        </div>
+        <form class="login-container" id="login-container" [formGroup]="signUpForm">
             <h1 class="title h1">Sign Up</h1>
             <p class="desc">Sign Up to create your account and create a menu for your restuarant</p>
-            <div class="input-container">
-                <input type="text" placeholder="Full Name *" required="true">
+            <div class="input-block">
+                <div class="input-container">
+                    <input type="text" formControlName="fullName" placeholder="Full Name *" required="true" />
+                    
+                </div>
+                <div
+                        class="error"
+                        [ngClass]="(fullName?.invalid && (fullName?.dirty || fullName?.touched)) ? 'show' : 'hide'"
+                    >
+                        <span>Please enter valid email address.</span>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="email" placeholder="Email Address *" required="true">
+            <div class="input-block">
+                <div class="input-container">
+                    <input formControlName="email" type="email" placeholder="Email Address *" required="true" />
+                </div>
+                <div
+                    class="error"
+                    [ngClass]="(email?.invalid && (email?.dirty || email?.touched)) ? 'show' : 'hide'"
+                >
+                   <span>Please Enter a valid Email address.</span>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="password" placeholder="Password *" required="true">
+            <div class="input-block">
+                <div class="input-container">
+                    <input type="password" placeholder="Password *" required="true" formControlName="password" />
+                </div>
+                <div
+                        class="error"
+                        [ngClass]="(password?.invalid && (password?.dirty || password?.touched)) ? 'show' : 'hide'"
+                    >
+                    <span>Password must be atleast 8 characters</span>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="password" placeholder="Confirm Password *" required="true">
+            <div class="input-block">
+                <div class="input-container">
+                    <input type="password" placeholder="Confirm Password *" required="true" formControlName="confirmPassword" />
+                </div>
+                <div
+                        class="error"
+                        [ngClass]="(confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)) ? 'show' : 'hide'"
+                    >
+                    <span>Password's are not matching</span>
+                </div>
             </div>
             <div class="account-controls">
-                <button class="primary-btn">Sign Up <i class="fas fa-solid fa-angle-right"></i></button>
+                <button [disabled]="!isValidForm" (click)="handleSignUp()" class="primary-btn">Sign Up <i class="fas fa-solid fa-angle-right"></i></button>
             </div>
 
             <span class="line"></span>

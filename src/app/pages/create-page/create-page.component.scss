@@ -1,8 +1,10 @@
 .page {
     &.create-page {
         padding: 16px 0;
-        display: flex;
-        justify-content: center;
-        
+        & main {
+            margin-top: 16px;
+            display: flex;
+            justify-content: center;
+        }
     }
 }

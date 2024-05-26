@@ -1,13 +1,15 @@
 .page {
     &.ord-menu-page {
-        padding: 16px 0;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
         & .main {
-            width: 100%;
+            padding: 16px 0;
             display: flex;
-            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            & .section {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+            }
         }
     } 
 }

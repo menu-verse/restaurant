@@ -7,6 +7,19 @@
     align-items: center;
     overflow: hidden;
     position: relative;
+
+    & .loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 20;
+    }
 }
 
 .login-container {
@@ -21,12 +34,22 @@
 
 
 .input-container {
-    margin-top: 10px;
+    margin-top: 0;
     width: 100%;
     border-radius: 5px;
     border: 2px solid var(--color-border);
     display: flex;
     align-items: center;
+}
+
+.input-block {
+    & .error {
+        margin-top: 6px;
+        color: var(--color-error);
+        &.hide {
+            visibility: hidden;
+        }
+    }
 }
 
 input {

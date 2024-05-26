@@ -1,17 +1,33 @@
 <div class="component login-cmp">
     <div class="form-container">
-        <div class="login-container" id="login-container">
+        <form class="login-container" id="login-container" [formGroup]="loginForm">
             <h1 class="title h1">Log In</h1>
             <p class="desc">Login to your account to create a menu for your restuarant</p>
-            <div class="input-container">
-                <input type="email" placeholder="Email Address" autofocus = "on">
+            <div class="input-block">
+                <div class="input-container">
+                    <input formControlName="email" type="email" placeholder="Email Address *" required="true" />
+                </div>
+                <div
+                    class="error"
+                    [ngClass]="(email?.invalid && (email?.dirty || email?.touched)) ? 'show' : 'hide'"
+                >
+                   <span>Please Enter a valid Email address.</span>
+                </div>
             </div>
-            <div class="input-container">
-                <input type="password" placeholder="Password" autofocus = "on">
+            <div class="input-block">
+                <div class="input-container">
+                    <input type="password" placeholder="Password *" required="true" formControlName="password" />
+                </div>
+                <div
+                        class="error"
+                        [ngClass]="(password?.invalid && (password?.dirty || password?.touched)) ? 'show' : 'hide'"
+                    >
+                    <span>Password must be atleast 8 characters</span>
+                </div>
             </div>
             <div class="account-controls">
                 <a class="primary-link" routerLink="/sign-up">Forgot Password?</a>
-                <button class="primary-btn">Log In <i class="fas fa-solid fa-angle-right"></i></button>
+                <button (click)="handleLogin()" class="primary-btn">Log In <i class="fas fa-solid fa-angle-right"></i></button>
             </div>
 
             <span class="line"></span>
@@ -21,7 +37,7 @@
                 <button class="social-login"><i style="color:#ea4335" class="fas fa-brands fa-google"></i></button>
             </div>
             <span class="small-text">Don't have an account yet? <a routerLink="/sign-up" class="small-text primary-link" id="signup-form-toggler">Sign up</a></span>
-        </div>
+        </form>
         <div class="placeholder-banner"  id="banner">
             <img src="assets/food.jpg" alt="" class="banner">
         </div>

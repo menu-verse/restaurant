@@ -57,6 +57,16 @@ input {
     z-index:4;
 }
 
+.input-block {
+    & .error {
+        margin-top: 6px;
+        color: var(--color-error);
+        &.hide {
+            visibility: hidden;
+        }
+    }
+}
+
 .social-logins {
     display: flex;
     align-items: center;
