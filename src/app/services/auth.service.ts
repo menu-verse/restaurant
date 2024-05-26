@@ -1,9 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  constructor(private router: Router) {
+    
+  }
 
   isAuthenticated() {
       const cookie:string = document.cookie;
@@ -19,5 +24,4 @@ export class AuthService {
       return userLoggedIn;
   }
 
-  constructor() { }
 }

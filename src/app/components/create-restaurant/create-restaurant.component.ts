@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-restaurant',
@@ -8,5 +9,13 @@ import { Component } from '@angular/core';
   styleUrl: './create-restaurant.component.scss'
 })
 export class CreateRestaurantComponent {
+
+  constructor(private router: Router) {
+
+  }
+
+  navigateToLunch() {
+    this.router.navigate(['lunch']);
+  }
 
 }
