@@ -5,24 +5,24 @@
                 <label for="closed">Closed on this day?</label>
                 <input  [(ngModel)]="isClosed"  (change)="handleClosed()" type="checkbox" id="closed" />
             </div>
-            <button class="primary-btn">
+            <button (click)="saveDay()" class="primary-btn">
                 SAVE
             </button>
         </div>
         <div class="input-section">
             <div class="input-container">
-                <input [disabled]="isClosed" class="input" name="openingTime" id="openingTime" placeholder="Open Time" />
+                <input [disabled]="isClosed" [(ngModel)]="openingTime" class="input" name="openingTime" id="openingTime" placeholder="Open Time" />
             </div>
             <div class="input-container">
-                <input [disabled]="isClosed" class="input" name="closingTime" id="closingTime" placeholder="Close Time" />
+                <input [disabled]="isClosed" [(ngModel)]="closingTime" class="input" name="closingTime" id="closingTime" placeholder="Close Time" />
             </div>
             <div class="input-container">
-                <input [disabled]="isClosed" class="input" name="lunchTime" id="lunchTime" placeholder="Lunch Time" />
+                <input [disabled]="isClosed" [(ngModel)]="lunchTime" class="input" name="lunchTime" id="lunchTime" placeholder="Lunch Time" />
             </div>
             <div class="menu-items-content">
                 <p class="desc"> LUNCH ITEMS </p>
-                <div *ngFor="let item of items" class="menu-items">
-                    <app-menu-item></app-menu-item>
+                <div class="menu-items">
+                    <div #menuItems>
                 </div>
             </div>
             <div class="btn-section">

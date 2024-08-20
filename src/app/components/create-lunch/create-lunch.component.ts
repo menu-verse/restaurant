@@ -13,12 +13,25 @@ import { Router } from '@angular/router';
 })
 export class CreateLunchComponent {
 
+  lunchMenu: any[];
+
   constructor(private router: Router) {
 
+    this.lunchMenu = [];
+
+  }
+
+  handleSaveMenu(data: string) {
+    console.log('CREATE LUNCH COMPONENT SAVE ' + data);
+    
   }
 
   navigateToOrdinary() {
     this.router.navigate(['ordinary-menu']);
+  }
+
+  navigateToRestaurant() {
+    this.router.navigate(['create'])
   }
 
 }

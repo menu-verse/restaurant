@@ -5,6 +5,10 @@
     }
     & .ele-container {
         margin-bottom: 16px;
+        &.two-col {
+            display: flex;
+            gap: 10px;
+        }
         & .label {
             display: block;
             margin-bottom: 8px;
@@ -26,6 +30,7 @@
             margin-right: 8px;
             display: inline-block;
             width: unset;
+            background-color: var(--back-disabled-button);
         }
     }
 }

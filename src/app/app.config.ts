@@ -5,13 +5,16 @@ import { routes } from './router/app.routes';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import restaurantReducer from './store';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideAnimationsAsync(),
     provideAnimationsAsync(),
-    provideStore(),
+    provideStore({
+      restaurant: restaurantReducer
+    }),
     provideHttpClient(
       withFetch()
     )

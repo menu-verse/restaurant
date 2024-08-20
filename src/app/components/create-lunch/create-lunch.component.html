@@ -1,16 +1,17 @@
 <div class="component create-lunch">
     <mat-tab-group>
         <mat-tab label="MONDAY">
-            <app-lunch-item></app-lunch-item>
+            <app-lunch-item [week]="'monday'" (saveMenu)="handleSaveMenu($event)"></app-lunch-item>
         </mat-tab>
-        <mat-tab label="TUESDAY"> <app-lunch-item></app-lunch-item> </mat-tab>
-        <mat-tab label="WEDNESDAY"> <app-lunch-item></app-lunch-item> </mat-tab>
-        <mat-tab label="THURSDAY"> <app-lunch-item></app-lunch-item> </mat-tab>
-        <mat-tab label="FRIDAY"> <app-lunch-item></app-lunch-item> </mat-tab>
-        <mat-tab label="SATURDAY"> <app-lunch-item></app-lunch-item> </mat-tab>
-        <mat-tab label="SUNDAY"> <app-lunch-item></app-lunch-item> </mat-tab>
+        <mat-tab label="TUESDAY"> <app-lunch-item [week]="'tuesday'"></app-lunch-item> </mat-tab>
+        <mat-tab label="WEDNESDAY"> <app-lunch-item [week]="'wednesday'"></app-lunch-item> </mat-tab>
+        <mat-tab label="THURSDAY"> <app-lunch-item [week]="'thursday'"></app-lunch-item> </mat-tab>
+        <mat-tab label="FRIDAY"> <app-lunch-item [week]="'friday'"></app-lunch-item> </mat-tab>
+        <mat-tab label="SATURDAY"> <app-lunch-item [week]="'saturday'"></app-lunch-item> </mat-tab>
+        <mat-tab label="SUNDAY"> <app-lunch-item [week]="'sunday'"></app-lunch-item> </mat-tab>
     </mat-tab-group>
     <div class="ele-container">
+        <button (click)="navigateToRestaurant()" class="primary-btn"><i class="fas fa-solid fa-angle-left"></i>Back</button>
         <button (click)="navigateToOrdinary()" class="primary-btn">Next <i class="fas fa-solid fa-angle-right"></i></button>
     </div>
 </div>

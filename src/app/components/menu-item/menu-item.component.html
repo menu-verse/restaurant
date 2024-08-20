@@ -1,12 +1,12 @@
 <div class="component menu-item">
     <div class="input-content">
         <div class="input-container">
-            <input class="input" name="item" placeholder="Item Name" />
+            <input [(ngModel)]="item" class="input" name="item" placeholder="Item Name" />
         </div>
         <div class="input-container">
-            <input class="input" name="price" placeholder="Item Price" />
+            <input [(ngModel)]="price" class="input" name="price" placeholder="Item Price" />
         </div>
-        <button class="secondary-btn">
+        <button (click)="deleteComponent()" class="secondary-btn">
             DELETE
         </button>
     </div>
