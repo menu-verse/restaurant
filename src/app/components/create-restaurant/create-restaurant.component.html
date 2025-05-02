@@ -21,25 +21,29 @@
         <label for="logo" class="small-text label"
           >Choose a Logo for your restaurant:</label
         >
-        <input
-          type="file"
-          formControlName="logo"
-          id="logo"
-          name="logo"
-          accept="image/png, image/jpeg"
-        />
+        <div class="input-container">
+          <input
+            type="text"
+            formControlName="logo"
+            id="logo"
+            name="logo"
+            accept="image/png, image/jpeg"
+          />
+        </div>
       </div>
       <div class="ele-container">
         <label for="cover" class="small-text label"
           >Choose a cover photo for your restaurant:</label
         >
-        <input
-          type="file"
-          formControlName="cover"
-          id="cover"
-          name="cover"
-          accept="image/png, image/jpeg"
-        />
+        <div class="input-container">
+          <input
+            type="text"
+            formControlName="cover"
+            id="cover"
+            name="cover"
+            accept="image/png, image/jpeg"
+          />
+        </div>
       </div>
       <div class="ele-container" formGroupName="address">
         <div class="ele-block">
@@ -124,7 +128,7 @@
           />
         </div>
       </div>
-      <div class="ele-container">
+      <div class="ele-container" formGroupName="address">
         <label class="small-text label" for="email">Email Address:</label>
         <div class="input-container">
           <input

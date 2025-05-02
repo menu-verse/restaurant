@@ -26,6 +26,7 @@ export class CreateRestaurantComponent {
       city: new FormControl('', [Validators.required]),
       country: new FormControl('', [Validators.required]),
       province: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
     });
 
     this.restaurantFormGroup = new FormGroup({
@@ -40,7 +41,7 @@ export class CreateRestaurantComponent {
       longitude: new FormControl({ value: '', disabled: true }, [
         Validators.required,
       ]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+
       lunch: new FormControl('', [Validators.required]),
       dining: new FormControl('', [Validators.required]),
       foodGenre: new FormControl('', [Validators.required]),
