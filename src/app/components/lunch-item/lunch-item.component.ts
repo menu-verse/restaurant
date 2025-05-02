@@ -15,7 +15,7 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
 @Component({
   selector: 'app-lunch-item',
   standalone: true,
-  imports: [MenuItemComponent, CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './lunch-item.component.html',
   styleUrl: './lunch-item.component.scss',
 })
