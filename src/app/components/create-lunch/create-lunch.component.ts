@@ -13,6 +13,7 @@ import { LunchItemComponent } from '../lunch-item/lunch-item.component';
 })
 export class CreateLunchComponent {
   lunchMenu: any[];
+  resID = '';
 
   constructor(
     private router: Router,
@@ -20,18 +21,23 @@ export class CreateLunchComponent {
     private httpService: HttpService
   ) {
     this.lunchMenu = [];
+    this.resID =
+      this.activeRoute.snapshot.queryParamMap.get('restaurant') || '';
   }
 
   handleSaveMenu(data: any) {
-    const resID = this.activeRoute.snapshot.queryParamMap.get('restaurant');
     this.httpService
-      .post(`restaurant/week-menu?resID=${resID}`, data)
+      .post(`restaurant/week-menu?resID=${this.resID}`, data)
       .subscribe(console.log);
-    console.log(data, resID);
+    console.log(data, this.resID);
   }
 
   navigateToOrdinary() {
-    this.router.navigate(['ordinary-menu']);
+    this.router.navigate(['ordinary-menu'], {
+      queryParams: {
+        restaurant: this.resID,
+      },
+    });
   }
 
   navigateToRestaurant() {

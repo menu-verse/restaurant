@@ -30,7 +30,7 @@ export class CreateRestaurantComponent {
 
     this.restaurantFormGroup = new FormGroup({
       logo: new FormControl('', [Validators.required]),
-      resName: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required]),
       cover: new FormControl('', [Validators.required]),
       address: addressFormGroup,
       latitude: new FormControl({ value: '', disabled: true }, [
@@ -46,6 +46,7 @@ export class CreateRestaurantComponent {
       foodGenre: new FormControl('', [Validators.required]),
 
       id: new FormControl(''),
+      url: new FormControl(''),
     });
   }
 
@@ -54,20 +55,23 @@ export class CreateRestaurantComponent {
   }
 
   updateID() {
-    const { resName } = this.restaurantFormGroup.value;
+    const { name } = this.restaurantFormGroup.value;
+    const id = this.getID(name);
     this.restaurantFormGroup.patchValue({
-      id: this.getID(resName),
+      id,
+      url: id,
     });
   }
 
   navigateToLunch() {
-    console.log(this.restaurantFormGroup.value);
     this.httpService
       .post('restaurant/add', this.restaurantFormGroup.value)
-      .subscribe(console.log);
-    const { valid } = this.restaurantFormGroup;
-    if (valid) {
-      this.router.navigate(['lunch']);
-    }
+      .subscribe((data: any) => {
+        this.router.navigate(['lunch'], {
+          queryParams: {
+            restaurant: data.url,
+          },
+        });
+      });
   }
 }

@@ -3,17 +3,17 @@
     <h1 class="h1">Create Your Restaurant</h1>
     <form class="form" [formGroup]="restaurantFormGroup">
       <div class="ele-container">
-        <label class="small-text label" for="resName"
+        <label class="small-text label" for="name"
           >Name of the restaurant:</label
         >
         <div class="input-container">
           <input
             placeholder="Your Restaurant Name"
             class="form-input"
-            formControlName="resName"
+            formControlName="name"
             type="text"
             (ngModelChange)="updateID()"
-            id="resName"
+            id="name"
           />
         </div>
       </div>
@@ -43,7 +43,9 @@
       </div>
       <div class="ele-container" formGroupName="address">
         <div class="ele-block">
-          <label class="small-text label" for="resName">Address Line 1:</label>
+          <label class="small-text label" for="addressLineOne"
+            >Address Line 1:</label
+          >
           <div class="input-container">
             <input
               placeholder="Address Line 1"
@@ -57,7 +59,9 @@
       </div>
       <div class="ele-container two-col" formGroupName="address">
         <div class="ele-block">
-          <label class="small-text label" for="resName">Address Line 2:</label>
+          <label class="small-text label" for="addressLineTwo"
+            >Address Line 2:</label
+          >
           <div class="input-container">
             <input
               placeholder="Street address"
@@ -69,7 +73,7 @@
           </div>
         </div>
         <div class="ele-block">
-          <label class="small-text label" for="resName">Zip Code:</label>
+          <label class="small-text label" for="zipCode">Zip Code:</label>
           <div class="input-container">
             <input
               placeholder="Zip Code"
@@ -83,7 +87,7 @@
       </div>
       <div class="ele-container two-col" formGroupName="address">
         <div class="ele-block">
-          <label class="small-text label" for="resName">City:</label>
+          <label class="small-text label" for="city">City:</label>
           <div class="input-container">
             <input
               placeholder="City"
@@ -95,7 +99,7 @@
           </div>
         </div>
         <div class="ele-block">
-          <label class="small-text label" for="resName">Province:</label>
+          <label class="small-text label" for="province">Province:</label>
           <div class="input-container">
             <input
               placeholder="Province"

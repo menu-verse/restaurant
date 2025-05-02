@@ -1,23 +1,18 @@
 <div class="component ord-menu">
-    <div class="content">
-        <div class="top-section">
-            
-            <button class="primary-btn">
-                SAVE
-            </button>
-        </div>
-        <div class="menu-section">
-            <p class="desc">
-                DAILY MENU ITEMS
-            </p>
-            <div class="menu-items">
-                <div #menuItems></div>
-            </div>
-            <div class="btn-section">
-                <button class="primary-btn" (click)="addNewComponent()">
-                    ADD CATEGORY
-                </button>
-            </div>
-        </div>
+  <div class="content">
+    <div class="top-section">
+      <button class="primary-btn" (click)="saveOrdinaryMenu()">Publish</button>
     </div>
+    <div class="menu-section">
+      <p class="desc">DAILY MENU ITEMS</p>
+      <div class="menu-items">
+        <div #menuItems></div>
+      </div>
+      <div class="btn-section">
+        <button class="primary-btn" (click)="addNewComponent()">
+          ADD CATEGORY
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
