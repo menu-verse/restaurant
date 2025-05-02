@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -7,11 +7,11 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './menu-item.component.html',
-  styleUrl: './menu-item.component.scss'
+  styleUrl: './menu-item.component.scss',
 })
 export class MenuItemComponent {
-
   @Input() key: number | undefined;
+  @Output() dataSent = new EventEmitter<any>();
 
   item: string;
   price: string;
@@ -21,8 +21,12 @@ export class MenuItemComponent {
     this.price = '';
   }
 
-  deleteComponent() {
-    
+  saveComponentData() {
+    this.dataSent.emit({
+      item: this.item,
+      price: this.price,
+    });
   }
 
+  deleteComponent() {}
 }

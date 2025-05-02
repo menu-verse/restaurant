@@ -1,13 +1,22 @@
 <div class="component menu-item">
-    <div class="input-content">
-        <div class="input-container">
-            <input [(ngModel)]="item" class="input" name="item" placeholder="Item Name" />
-        </div>
-        <div class="input-container">
-            <input [(ngModel)]="price" class="input" name="price" placeholder="Item Price" />
-        </div>
-        <button (click)="deleteComponent()" class="secondary-btn">
-            DELETE
-        </button>
+  <div class="input-content">
+    <div class="input-container">
+      <input
+        [(ngModel)]="item"
+        class="input"
+        name="item"
+        placeholder="Item Name"
+      />
     </div>
+    <div class="input-container">
+      <input
+        [(ngModel)]="price"
+        class="input"
+        name="price"
+        placeholder="Item Price"
+      />
+    </div>
+    <button (click)="deleteComponent()" class="secondary-btn">DELETE</button>
+    <button (click)="saveComponentData()" class="primary-btn">SAVE</button>
+  </div>
 </div>

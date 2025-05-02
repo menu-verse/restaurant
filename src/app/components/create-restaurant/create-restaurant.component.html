@@ -1,107 +1,208 @@
 <div class="component create-res">
-    <div class="container">
-        <h1 class="h1">
-            Create Your Restaurant
-        </h1>
-        <form class="form" [formGroup]="restaurantFormGroup">
-            <div class="ele-container">
-                <label class="small-text label" for="resName">Name of the restaurant:</label>
-                <div class="input-container">
-                    <input placeholder="Your Restaurant Name" class="form-input" formControlName="resName" type="text" id="resName" /> 
-                </div>
-            </div>
-            <div class="ele-container">
-                <label for="logo" class="small-text label">Choose a Logo for your restaurant:</label>
-                <input type="file" formControlName="logo" id="logo" name="logo" accept="image/png, image/jpeg" />
-            </div>
-            <div class="ele-container">
-                <label for="cover" class="small-text label">Choose a cover photo for your restaurant:</label>
-                <input type="file" formControlName="cover" id="cover" name="cover" accept="image/png, image/jpeg" />
-            </div>
-            <div class="ele-container">
-                <div class="ele-block">
-                    <label class="small-text label" for="resName">Address Line 1:</label>
-                    <div class="input-container">
-                        <input placeholder="Address Line 1" class="form-input" formControlName="resName" type="text" id="resName" /> 
-                    </div>
-                </div>
-            </div>
-            <div class="ele-container two-col">
-                <div class="ele-block">
-                    <label class="small-text label" for="resName">Address Line 2:</label>
-                    <div class="input-container">
-                        <input placeholder="Street address" class="form-input" formControlName="resName" type="text" id="resName" /> 
-                    </div>
-                </div>
-                <div class="ele-block">
-                    <label class="small-text label" for="resName">Zip Code:</label>
-                    <div class="input-container">
-                        <input placeholder="Zip Code" class="form-input" formControlName="resName" type="text" id="resName" /> 
-                    </div>
-                </div>
-            </div>
-            <div class="ele-container two-col">
-                <div class="ele-block">
-                    <label class="small-text label" for="resName">City:</label>
-                    <div class="input-container">
-                        <input placeholder="City" class="form-input" formControlName="resName" type="text" id="resName" /> 
-                    </div>
-                </div>
-                <div class="ele-block">
-                    <label class="small-text label" for="resName">Province:</label>
-                    <div class="input-container">
-                        <input placeholder="Province" class="form-input" formControlName="resName" type="text" id="resName" /> 
-                    </div>
-                </div>
-            </div>
-            
-            <div class="ele-container">
-                <label class="small-text label" for="phone">Phone Number:</label>
-                <div class="input-container">
-                    <input placeholder="+46000000000" class="form-input" formControlName="phoneNumber" type="number" id="phone" /> 
-                </div>
-            </div>
-            <div class="ele-container">
-                <label class="small-text label" for="email">Email Address:</label>
-                <div class="input-container">
-                    <input placeholder="name@name.com" class="form-input" type="email" id="email"  formControlName="email"/> 
-                </div>
-            </div>
-            <div class="ele-container">
-                <label class="small-text label" for="email">Will you have lunch menu:</label>
-                <div class="radio-container">
-                    <div class="radio-sec">
-                        <input type="radio" formControlName="lunch" id="lunch_yes" name="lunch" value="YES">
-                        <label for="lunch_yes">YES</label>
-                    </div>
-                    <div class="radio-sec">
-                        <input type="radio" formControlName="lunch" id="lunch_no" name="lunch" value="NO">
-                        <label for="lunch_no">NO</label>
-                    </div>
-                </div>
-            </div>
-            <div class="ele-container">
-                <label class="small-text label" for="email">Will you have Dining menu:</label>
-                <div class="radio-container">
-                    <div class="radio-sec">
-                        <input type="radio" formControlName="dining" id="dining_yes" name="dining" value="YES">
-                        <label for="dining_yes">YES</label>
-                    </div>
-                    <div class="radio-sec">
-                        <input type="radio" formControlName="dining" id="dining_no" name="dining" value="NO">
-                        <label for="dining_no">NO</label>
-                    </div>
-                </div>
-            </div>
-            <div class="ele-container">
-                <label class="small-text label" for="genre">Food Genre:</label>
-                <div class="input-container">
-                    <input formControlName="foodGenre" class="form-input" type="text" id="genre" placeholder="Eg: Indian, Continental, Italin" /> 
-                </div>
-            </div>
-            <div class="ele-container">
-                <button (click)="navigateToLunch()" class="primary-btn">Next <i class="fas fa-solid fa-angle-right"></i></button>
-            </div>
-        </form>
-    </div>
+  <div class="container">
+    <h1 class="h1">Create Your Restaurant</h1>
+    <form class="form" [formGroup]="restaurantFormGroup">
+      <div class="ele-container">
+        <label class="small-text label" for="resName"
+          >Name of the restaurant:</label
+        >
+        <div class="input-container">
+          <input
+            placeholder="Your Restaurant Name"
+            class="form-input"
+            formControlName="resName"
+            type="text"
+            (ngModelChange)="updateID()"
+            id="resName"
+          />
+        </div>
+      </div>
+      <div class="ele-container">
+        <label for="logo" class="small-text label"
+          >Choose a Logo for your restaurant:</label
+        >
+        <input
+          type="file"
+          formControlName="logo"
+          id="logo"
+          name="logo"
+          accept="image/png, image/jpeg"
+        />
+      </div>
+      <div class="ele-container">
+        <label for="cover" class="small-text label"
+          >Choose a cover photo for your restaurant:</label
+        >
+        <input
+          type="file"
+          formControlName="cover"
+          id="cover"
+          name="cover"
+          accept="image/png, image/jpeg"
+        />
+      </div>
+      <div class="ele-container" formGroupName="address">
+        <div class="ele-block">
+          <label class="small-text label" for="resName">Address Line 1:</label>
+          <div class="input-container">
+            <input
+              placeholder="Address Line 1"
+              class="form-input"
+              formControlName="addressLineOne"
+              type="text"
+              id="addressLineOne"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="ele-container two-col" formGroupName="address">
+        <div class="ele-block">
+          <label class="small-text label" for="resName">Address Line 2:</label>
+          <div class="input-container">
+            <input
+              placeholder="Street address"
+              class="form-input"
+              formControlName="addressLineTwo"
+              type="text"
+              id="addressLineTwo"
+            />
+          </div>
+        </div>
+        <div class="ele-block">
+          <label class="small-text label" for="resName">Zip Code:</label>
+          <div class="input-container">
+            <input
+              placeholder="Zip Code"
+              class="form-input"
+              formControlName="zipCode"
+              type="text"
+              id="zipCode"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="ele-container two-col" formGroupName="address">
+        <div class="ele-block">
+          <label class="small-text label" for="resName">City:</label>
+          <div class="input-container">
+            <input
+              placeholder="City"
+              class="form-input"
+              formControlName="city"
+              type="text"
+              id="city"
+            />
+          </div>
+        </div>
+        <div class="ele-block">
+          <label class="small-text label" for="resName">Province:</label>
+          <div class="input-container">
+            <input
+              placeholder="Province"
+              class="form-input"
+              formControlName="province"
+              type="text"
+              id="province"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="ele-container">
+        <label class="small-text label" for="phone">Phone Number:</label>
+        <div class="input-container">
+          <input
+            placeholder="+46000000000"
+            class="form-input"
+            formControlName="phoneNumber"
+            type="number"
+            id="phone"
+          />
+        </div>
+      </div>
+      <div class="ele-container">
+        <label class="small-text label" for="email">Email Address:</label>
+        <div class="input-container">
+          <input
+            placeholder="name@name.com"
+            class="form-input"
+            type="email"
+            id="email"
+            formControlName="email"
+          />
+        </div>
+      </div>
+      <div class="ele-container">
+        <label class="small-text label" for="email"
+          >Will you have lunch menu:</label
+        >
+        <div class="radio-container">
+          <div class="radio-sec">
+            <input
+              type="radio"
+              formControlName="lunch"
+              id="lunch_yes"
+              name="lunch"
+              value="YES"
+            />
+            <label for="lunch_yes">YES</label>
+          </div>
+          <div class="radio-sec">
+            <input
+              type="radio"
+              formControlName="lunch"
+              id="lunch_no"
+              name="lunch"
+              value="NO"
+            />
+            <label for="lunch_no">NO</label>
+          </div>
+        </div>
+      </div>
+      <div class="ele-container">
+        <label class="small-text label" for="email"
+          >Will you have Dining menu:</label
+        >
+        <div class="radio-container">
+          <div class="radio-sec">
+            <input
+              type="radio"
+              formControlName="dining"
+              id="dining_yes"
+              name="dining"
+              value="YES"
+            />
+            <label for="dining_yes">YES</label>
+          </div>
+          <div class="radio-sec">
+            <input
+              type="radio"
+              formControlName="dining"
+              id="dining_no"
+              name="dining"
+              value="NO"
+            />
+            <label for="dining_no">NO</label>
+          </div>
+        </div>
+      </div>
+      <div class="ele-container">
+        <label class="small-text label" for="genre">Food Genre:</label>
+        <div class="input-container">
+          <input
+            formControlName="foodGenre"
+            class="form-input"
+            type="text"
+            id="genre"
+            placeholder="Eg: Indian, Continental, Italin"
+          />
+        </div>
+      </div>
+      <div class="ele-container">
+        <button (click)="navigateToLunch()" class="primary-btn">
+          Next <i class="fas fa-solid fa-angle-right"></i>
+        </button>
+      </div>
+    </form>
+  </div>
 </div>
