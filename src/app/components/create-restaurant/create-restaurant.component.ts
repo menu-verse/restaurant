@@ -50,7 +50,7 @@ export class CreateRestaurantComponent {
   }
 
   getID(name: string) {
-    return name.replace(/\s+/g, '-');
+    return name.toLowerCase().replace(/\s+/g, '-');
   }
 
   updateID() {

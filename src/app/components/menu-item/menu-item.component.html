@@ -2,7 +2,8 @@
   <div class="input-content">
     <div class="input-container">
       <input
-        [(ngModel)]="item"
+        [(ngModel)]="name"
+        (ngModelChange)="saveComponentData()"
         class="input"
         name="item"
         placeholder="Item Name"
@@ -11,12 +12,12 @@
     <div class="input-container">
       <input
         [(ngModel)]="price"
+        (ngModelChange)="saveComponentData()"
         class="input"
         name="price"
         placeholder="Item Price"
       />
     </div>
     <button (click)="deleteComponent()" class="secondary-btn">DELETE</button>
-    <button (click)="saveComponentData()" class="primary-btn">SAVE</button>
   </div>
 </div>

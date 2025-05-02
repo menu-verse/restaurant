@@ -13,17 +13,17 @@ export class MenuItemComponent {
   @Input() key: number | undefined;
   @Output() dataSent = new EventEmitter<any>();
 
-  item: string;
+  name: string;
   price: string;
 
   constructor() {
-    this.item = '';
+    this.name = '';
     this.price = '';
   }
 
   saveComponentData() {
     this.dataSent.emit({
-      item: this.item,
+      name: this.name,
       price: this.price,
     });
   }

@@ -77,7 +77,14 @@ export class LunchItemComponent {
   }
 
   saveDay() {
-    this.saveMenu.emit('SUJITH');
+    this.saveMenu.emit({
+      items: this.lunchItems,
+      openingTime: this.openingTime,
+      closingTime: this.closingTime,
+      lunchTime: this.lunchTime,
+      closed: this.isClosed,
+      day: this.week,
+    });
   }
 
   handleClosed() {}
