@@ -55,6 +55,10 @@ export class CreateRestaurantComponent {
     return name.toLowerCase().replace(/\s+/g, '-');
   }
 
+  getCurrentLocation() {
+    navigator.geolocation.getCurrentPosition(console.log);
+  }
+
   updateID() {
     const { name } = this.restaurantFormGroup.value;
     const id = this.getID(name);
