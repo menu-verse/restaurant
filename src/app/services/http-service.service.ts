@@ -16,6 +16,6 @@ export class HttpService {
 
   post(url: string, body: any): Observable<any> {
     const fullUrl = this.ROOT_PATH + url;
-    return this.http.post(fullUrl, body);
+    return this.http.post(fullUrl, body, { withCredentials: true });
   }
 }

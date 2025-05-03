@@ -27,6 +27,8 @@ export class CreateRestaurantComponent {
       country: new FormControl('', [Validators.required]),
       province: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
+      lat: new FormControl(''),
+      lon: new FormControl(''),
     });
 
     this.restaurantFormGroup = new FormGroup({
@@ -34,13 +36,8 @@ export class CreateRestaurantComponent {
       name: new FormControl('', [Validators.required]),
       cover: new FormControl('', [Validators.required]),
       address: addressFormGroup,
-      latitude: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-      ]),
+
       phoneNumber: new FormControl('', [Validators.required]),
-      longitude: new FormControl({ value: '', disabled: true }, [
-        Validators.required,
-      ]),
 
       lunch: new FormControl('', [Validators.required]),
       dining: new FormControl('', [Validators.required]),
@@ -56,7 +53,14 @@ export class CreateRestaurantComponent {
   }
 
   getCurrentLocation() {
-    navigator.geolocation.getCurrentPosition(console.log);
+    navigator.geolocation.getCurrentPosition((position: any) => {
+      console.log(this.restaurantFormGroup.get('address')?.value);
+      this.restaurantFormGroup.get('address')?.patchValue({
+        lat: position.coords.latitude,
+        lon: position.coords.longitude,
+      });
+      console.log(this.restaurantFormGroup.get('address')?.value);
+    });
   }
 
   updateID() {

@@ -28,8 +28,7 @@ export class CreateLunchComponent {
   handleSaveMenu(data: any) {
     this.httpService
       .post(`restaurant/week-menu?resID=${this.resID}`, data)
-      .subscribe(console.log);
-    console.log(data, this.resID);
+      .subscribe(() => {});
   }
 
   navigateToOrdinary() {

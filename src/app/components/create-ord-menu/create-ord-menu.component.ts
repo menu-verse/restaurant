@@ -53,7 +53,6 @@ export class CreateOrdMenuComponent {
         } else {
           this.lunchItems.push({ key: key, ...menuData });
         }
-        console.log(this.lunchItems);
       });
       this.components.push(component);
     }
@@ -63,6 +62,6 @@ export class CreateOrdMenuComponent {
     const resID = this.activeRoute.snapshot.queryParamMap.get('restaurant');
     this.httpService
       .post(`restaurant/ord-menu?resID=${resID}`, this.lunchItems)
-      .subscribe(console.log);
+      .subscribe(() => {});
   }
 }

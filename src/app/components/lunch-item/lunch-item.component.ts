@@ -70,7 +70,6 @@ export class LunchItemComponent {
         } else {
           this.lunchItems.push({ key: key, ...data });
         }
-        console.log(this.lunchItems);
       });
       this.components.push(component);
     }
