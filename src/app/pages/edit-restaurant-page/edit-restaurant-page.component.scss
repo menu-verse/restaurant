@@ -1,0 +1,11 @@
+.page {
+  &.create-page {
+    & main {
+      padding: 16px 0;
+      display: flex;
+      justify-content: center;
+      height: calc(100vh - 76px);
+      overflow: auto;
+    }
+  }
+}

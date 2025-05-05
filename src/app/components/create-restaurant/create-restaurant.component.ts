@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import {
   FormControl,
   FormGroup,
@@ -15,7 +15,10 @@ import { HttpService } from '../../services/http-service.service';
   templateUrl: './create-restaurant.component.html',
   styleUrl: './create-restaurant.component.scss',
 })
-export class CreateRestaurantComponent {
+export class CreateRestaurantComponent implements OnChanges {
+  @Input() title: string = '';
+  @Input() data: any;
+
   restaurantFormGroup: FormGroup;
 
   constructor(private router: Router, private httpService: HttpService) {
@@ -50,6 +53,12 @@ export class CreateRestaurantComponent {
 
   getID(name: string) {
     return name.toLowerCase().replace(/\s+/g, '-');
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['data'] && changes['data'].currentValue) {
+      this.restaurantFormGroup.setValue(changes['data'].currentValue);
+    }
   }
 
   getCurrentLocation() {

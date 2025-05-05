@@ -1,0 +1,12 @@
+<div class="page create-page">
+  <app-header></app-header>
+  <main>
+    <mat-spinner color="#94486c" *ngIf="loading"></mat-spinner>
+    <div *ngIf="!loading">
+      <app-create-restaurant
+        title="Edit Your Restaurant"
+        [data]="restaurantData"
+      />
+    </div>
+  </main>
+</div>
