@@ -4,7 +4,9 @@ import {
   ComponentRef,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -18,30 +20,49 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   templateUrl: './ord-menu-item.component.html',
   styleUrl: './ord-menu-item.component.scss',
 })
-export class OrdMenuItemComponent {
+export class OrdMenuItemComponent implements OnChanges {
   type = '';
   components: any = [];
   lunchItems: any = [];
 
+  @Input() data: any;
   @Input() key: number | undefined;
   @Output() foodDataSent = new EventEmitter<any>();
 
-  @ViewChild('foodItems', { static: false, read: ViewContainerRef }) target:
+  @ViewChild('foodItems', { static: true, read: ViewContainerRef }) target:
     | ViewContainerRef
     | undefined;
   private componentRef: ComponentRef<any> | undefined;
 
-  constructor(private resolver: ComponentFactoryResolver) {}
+  constructor(private resolver: ComponentFactoryResolver) {
+    this.type = '';
+  }
 
-  addMenuItem() {
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] && changes['data'].currentValue) {
+      console.log(this.target);
+      this.type = changes['data'].currentValue.type;
+      this.lunchItems = changes['data'].currentValue.items;
+      for (let item of changes['data'].currentValue.items) {
+        this.addMenuItem(item);
+      }
+    }
+  }
+
+  addMenuItem(data?: any) {
     let childComponent =
       this.resolver.resolveComponentFactory(MenuItemComponent);
+
     const component = this.target?.createComponent(childComponent);
+
     if (component) {
       component.instance.key =
         this.components.length > 0
           ? this.components[this.components.length - 1].instance.key + 1
           : 0;
+      if (data) {
+        component.setInput('data', data);
+      }
       component.instance.dataSent.subscribe((menuData: any) => {
         const { key } = component.instance;
 

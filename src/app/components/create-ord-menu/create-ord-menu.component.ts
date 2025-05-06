@@ -2,6 +2,7 @@ import {
   Component,
   ComponentFactoryResolver,
   ComponentRef,
+  OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -16,9 +17,10 @@ import { OrdMenuItemComponent } from '../ord-menu-item/ord-menu-item.component';
   templateUrl: './create-ord-menu.component.html',
   styleUrl: './create-ord-menu.component.scss',
 })
-export class CreateOrdMenuComponent {
+export class CreateOrdMenuComponent implements OnInit {
   components: any = [];
   lunchItems: any = [];
+  resID: string = '';
 
   @ViewChild('menuItems', { static: false, read: ViewContainerRef }) target:
     | ViewContainerRef
@@ -29,9 +31,22 @@ export class CreateOrdMenuComponent {
     private resolver: ComponentFactoryResolver,
     private activeRoute: ActivatedRoute,
     private httpService: HttpService
-  ) {}
+  ) {
+    this.resID =
+      this.activeRoute.snapshot.queryParamMap.get('restaurant') || '';
+  }
 
-  addNewComponent() {
+  ngOnInit(): void {
+    this.httpService.get(`restaurant/${this.resID}`).subscribe((data: any) => {
+      this.lunchItems = data.ordinaryMenu;
+
+      for (let item of data.ordinaryMenu) {
+        this.addNewComponent(item);
+      }
+    });
+  }
+
+  addNewComponent(data?: any) {
     let childComponent =
       this.resolver.resolveComponentFactory(OrdMenuItemComponent);
 
@@ -41,6 +56,9 @@ export class CreateOrdMenuComponent {
         this.components.length > 0
           ? this.components[this.components.length - 1].instance.key + 1
           : 0;
+      if (data) {
+        component.setInput('data', data);
+      }
       component.instance.foodDataSent.subscribe((menuData: any) => {
         const { key } = component.instance;
 
@@ -59,9 +77,8 @@ export class CreateOrdMenuComponent {
   }
 
   saveOrdinaryMenu() {
-    const resID = this.activeRoute.snapshot.queryParamMap.get('restaurant');
     this.httpService
-      .post(`restaurant/ord-menu?resID=${resID}`, this.lunchItems)
+      .post(`restaurant/ord-menu?resID=${this.resID}`, this.lunchItems)
       .subscribe(() => {});
   }
 }
