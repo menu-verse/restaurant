@@ -18,6 +18,7 @@ import { HttpService } from '../../services/http-service.service';
 export class CreateRestaurantComponent implements OnChanges {
   @Input() title: string = '';
   @Input() data: any;
+  @Input() apiUrl: any = '';
 
   restaurantFormGroup: FormGroup;
 
@@ -83,7 +84,7 @@ export class CreateRestaurantComponent implements OnChanges {
 
   navigateToLunch() {
     this.httpService
-      .post('restaurant/add', this.restaurantFormGroup.value)
+      .post(this.apiUrl, this.restaurantFormGroup.value)
       .subscribe((data: any) => {
         this.router.navigate(['lunch'], {
           queryParams: {

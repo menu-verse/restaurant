@@ -5,6 +5,7 @@
     <div *ngIf="!loading">
       <app-create-restaurant
         title="Edit Your Restaurant"
+        [apiUrl]="'restaurant/update?resID=' + resID"
         [data]="restaurantData"
       />
     </div>
