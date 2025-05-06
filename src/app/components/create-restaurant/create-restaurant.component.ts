@@ -64,12 +64,10 @@ export class CreateRestaurantComponent implements OnChanges {
 
   getCurrentLocation() {
     navigator.geolocation.getCurrentPosition((position: any) => {
-      console.log(this.restaurantFormGroup.get('address')?.value);
       this.restaurantFormGroup.get('address')?.patchValue({
         lat: position.coords.latitude,
         lon: position.coords.longitude,
       });
-      console.log(this.restaurantFormGroup.get('address')?.value);
     });
   }
 

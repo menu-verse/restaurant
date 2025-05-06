@@ -40,9 +40,15 @@ export class OrdMenuItemComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['data'] && changes['data'].currentValue) {
-      console.log(this.target);
       this.type = changes['data'].currentValue.type;
-      this.lunchItems = changes['data'].currentValue.items;
+      this.lunchItems = changes['data'].currentValue.items.map(
+        (item: any, index: any) => {
+          return {
+            ...item,
+            key: index,
+          };
+        }
+      );
       for (let item of changes['data'].currentValue.items) {
         this.addMenuItem(item);
       }
@@ -60,6 +66,7 @@ export class OrdMenuItemComponent implements OnChanges {
         this.components.length > 0
           ? this.components[this.components.length - 1].instance.key + 1
           : 0;
+      console.log(data, component.instance.key);
       if (data) {
         component.setInput('data', data);
       }
@@ -75,9 +82,10 @@ export class OrdMenuItemComponent implements OnChanges {
         } else {
           this.lunchItems.push({ key: key, ...menuData });
         }
-        this.components.push(component);
+
         this.sendFullData();
       });
+      this.components.push(component);
     }
   }
   sendFullData() {

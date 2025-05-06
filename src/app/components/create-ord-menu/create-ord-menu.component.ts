@@ -38,7 +38,12 @@ export class CreateOrdMenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.httpService.get(`restaurant/${this.resID}`).subscribe((data: any) => {
-      this.lunchItems = data.ordinaryMenu;
+      this.lunchItems = data.ordinaryMenu.map((item: any, index: any) => {
+        return {
+          ...item,
+          key: index,
+        };
+      });
 
       for (let item of data.ordinaryMenu) {
         this.addNewComponent(item);
