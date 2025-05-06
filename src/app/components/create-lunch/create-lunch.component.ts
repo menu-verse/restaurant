@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../services/http-service.service';
@@ -11,9 +11,10 @@ import { LunchItemComponent } from '../lunch-item/lunch-item.component';
   templateUrl: './create-lunch.component.html',
   styleUrl: './create-lunch.component.scss',
 })
-export class CreateLunchComponent {
+export class CreateLunchComponent implements OnInit {
   lunchMenu: any[];
   resID = '';
+  weekMenu: any = [];
 
   constructor(
     private router: Router,
@@ -23,6 +24,14 @@ export class CreateLunchComponent {
     this.lunchMenu = [];
     this.resID =
       this.activeRoute.snapshot.queryParamMap.get('restaurant') || '';
+  }
+  ngOnInit(): void {
+    this.httpService.get(`restaurant/${this.resID}`).subscribe((data: any) => {
+      data.weekMenu.forEach((item: any) => {
+        const key = item.day;
+        this.weekMenu[key] = item;
+      });
+    });
   }
 
   handleSaveMenu(data: any) {

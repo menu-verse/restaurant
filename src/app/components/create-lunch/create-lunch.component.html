@@ -3,29 +3,34 @@
     <mat-tab label="MONDAY">
       <app-lunch-item
         [week]="'monday'"
+        [data]="weekMenu['monday']"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
     </mat-tab>
     <mat-tab label="TUESDAY">
       <app-lunch-item
         [week]="'tuesday'"
+        [data]="weekMenu['tuesday']"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
     </mat-tab>
     <mat-tab label="WEDNESDAY">
       <app-lunch-item
         [week]="'wednesday'"
+        [data]="weekMenu['wednesday']"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
     </mat-tab>
     <mat-tab label="THURSDAY">
       <app-lunch-item
         [week]="'thursday'"
+        [data]="weekMenu['thursday']"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
     </mat-tab>
     <mat-tab label="FRIDAY">
       <app-lunch-item
+        [data]="weekMenu['friday']"
         [week]="'friday'"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
@@ -33,12 +38,14 @@
     <mat-tab label="SATURDAY">
       <app-lunch-item
         [week]="'saturday'"
+        [data]="weekMenu['saturday']"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
     </mat-tab>
     <mat-tab label="SUNDAY">
       <app-lunch-item
         [week]="'sunday'"
+        [data]="weekMenu['sunday']"
         (saveMenu)="handleSaveMenu($event)"
       ></app-lunch-item>
     </mat-tab>

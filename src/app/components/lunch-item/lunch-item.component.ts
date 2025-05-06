@@ -5,7 +5,9 @@ import {
   ComponentRef,
   EventEmitter,
   Input,
+  OnChanges,
   Output,
+  SimpleChanges,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -19,11 +21,11 @@ import { MenuItemComponent } from '../menu-item/menu-item.component';
   templateUrl: './lunch-item.component.html',
   styleUrl: './lunch-item.component.scss',
 })
-export class LunchItemComponent {
+export class LunchItemComponent implements OnChanges {
   @Input() week: string | undefined;
+  @Input() data: any;
   @Output() saveMenu = new EventEmitter();
 
-  items: any = [];
   lunchItems: any = [];
   isClosed: boolean = false;
   openingTime: string;
@@ -44,8 +46,21 @@ export class LunchItemComponent {
     this.closingTime = '';
     this.lunchTime = '';
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] && changes['data'].currentValue) {
+      const { currentValue } = changes['data'];
+      this.openingTime = currentValue.openingTime;
+      this.closingTime = currentValue.closingTime;
+      this.lunchTime = currentValue.lunchTime;
+      this.isClosed = currentValue.closed;
+      this.lunchItems = currentValue.items;
+      for (let item of currentValue.items) {
+        this.handleAddItem(item);
+      }
+    }
+  }
 
-  handleAddItem() {
+  handleAddItem(item?: any) {
     let childComponent =
       this.resolver.resolveComponentFactory(MenuItemComponent);
     const component = this.target?.createComponent(
@@ -58,6 +73,9 @@ export class LunchItemComponent {
         this.components.length > 0
           ? this.components[this.components.length - 1].instance.key + 1
           : 0;
+      if (item) {
+        component.setInput('data', item);
+      }
       component.instance.dataSent.subscribe((data: any) => {
         const { key } = component.instance;
 

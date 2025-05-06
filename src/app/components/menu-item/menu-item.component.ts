@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,8 +16,9 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './menu-item.component.html',
   styleUrl: './menu-item.component.scss',
 })
-export class MenuItemComponent {
+export class MenuItemComponent implements OnChanges {
   @Input() key: number | undefined;
+  @Input() data: any;
   @Output() dataSent = new EventEmitter<any>();
 
   name: string;
@@ -19,6 +27,13 @@ export class MenuItemComponent {
   constructor() {
     this.name = '';
     this.price = '';
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] && changes['data'].currentValue) {
+      const { currentValue } = changes['data'];
+      this.name = currentValue.name;
+      this.price = currentValue.price;
+    }
   }
 
   saveComponentData() {
