@@ -10,9 +10,7 @@ import { environment } from '../../environments/environment';
 export class HttpService {
   ROOT_PATH = environment.apiUrl;
 
-  constructor(private http: HttpClient) {
-    console.log(this.ROOT_PATH, environment);
-  }
+  constructor(private http: HttpClient) {}
 
   get(url: string): Observable<any> {
     return this.http.get(this.ROOT_PATH + url, { withCredentials: true });

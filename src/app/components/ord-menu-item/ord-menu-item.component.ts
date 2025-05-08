@@ -66,7 +66,7 @@ export class OrdMenuItemComponent implements OnChanges {
         this.components.length > 0
           ? this.components[this.components.length - 1].instance.key + 1
           : 0;
-      console.log(data, component.instance.key);
+
       if (data) {
         component.setInput('data', data);
       }
