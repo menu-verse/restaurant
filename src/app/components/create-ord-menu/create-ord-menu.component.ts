@@ -1,3 +1,4 @@
+import { NgIf } from '@angular/common';
 import {
   Component,
   ComponentFactoryResolver,
@@ -6,14 +7,15 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpService } from '../../services/http-service.service';
 import { OrdMenuItemComponent } from '../ord-menu-item/ord-menu-item.component';
+import { ToastComponent } from '../toast/toast.component';
 
 @Component({
   selector: 'app-create-ord-menu',
   standalone: true,
-  imports: [],
+  imports: [ToastComponent, NgIf],
   templateUrl: './create-ord-menu.component.html',
   styleUrl: './create-ord-menu.component.scss',
 })
@@ -21,6 +23,7 @@ export class CreateOrdMenuComponent implements OnInit {
   components: any = [];
   lunchItems: any = [];
   resID: string = '';
+  showToast: boolean = false;
 
   @ViewChild('menuItems', { static: false, read: ViewContainerRef }) target:
     | ViewContainerRef
@@ -30,8 +33,10 @@ export class CreateOrdMenuComponent implements OnInit {
   constructor(
     private resolver: ComponentFactoryResolver,
     private activeRoute: ActivatedRoute,
-    private httpService: HttpService
+    private httpService: HttpService,
+    private router: Router
   ) {
+    this.onToastClosed = this.onToastClosed.bind(this);
     this.resID =
       this.activeRoute.snapshot.queryParamMap.get('restaurant') || '';
   }
@@ -81,9 +86,16 @@ export class CreateOrdMenuComponent implements OnInit {
     }
   }
 
+  onToastClosed() {
+    this.showToast = false;
+    this.router.navigate(['dashboard']);
+  }
+
   saveOrdinaryMenu() {
     this.httpService
       .post(`restaurant/ord-menu?resID=${this.resID}`, this.lunchItems)
-      .subscribe(() => {});
+      .subscribe(() => {
+        this.showToast = true;
+      });
   }
 }

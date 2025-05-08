@@ -140,60 +140,7 @@
           />
         </div>
       </div>
-      <div class="ele-container">
-        <label class="small-text label" for="email"
-          >Will you have lunch menu:</label
-        >
-        <div class="radio-container">
-          <div class="radio-sec">
-            <input
-              type="radio"
-              formControlName="lunch"
-              id="lunch_yes"
-              name="lunch"
-              value="YES"
-            />
-            <label for="lunch_yes">YES</label>
-          </div>
-          <div class="radio-sec">
-            <input
-              type="radio"
-              formControlName="lunch"
-              id="lunch_no"
-              name="lunch"
-              value="NO"
-            />
-            <label for="lunch_no">NO</label>
-          </div>
-        </div>
-      </div>
-      <div class="ele-container">
-        <label class="small-text label" for="email"
-          >Will you have Dining menu:</label
-        >
-        <div class="radio-container">
-          <div class="radio-sec">
-            <input
-              type="radio"
-              formControlName="dining"
-              id="dining_yes"
-              name="dining"
-              value="YES"
-            />
-            <label for="dining_yes">YES</label>
-          </div>
-          <div class="radio-sec">
-            <input
-              type="radio"
-              formControlName="dining"
-              id="dining_no"
-              name="dining"
-              value="NO"
-            />
-            <label for="dining_no">NO</label>
-          </div>
-        </div>
-      </div>
+
       <div class="ele-container">
         <label class="small-text label" for="genre">Food Genre:</label>
         <div class="input-container">
@@ -211,6 +158,37 @@
         <button (click)="getCurrentLocation()" class="primary-btn">
           Get Location <i class="fas fa-solid fa-location"></i>
         </button>
+        <span>
+          Clicking on this button fetches your Current Latitude and Longitude
+        </span>
+      </div>
+      <div class="ele-container two-col" formGroupName="address">
+        <div class="ele-block">
+          <label class="small-text label" for="lat">Latitude:</label>
+          <div class="input-container">
+            <input
+              placeholder="Latitude"
+              class="form-input"
+              formControlName="lat"
+              type="text"
+              readonly
+              id="lat"
+            />
+          </div>
+        </div>
+        <div class="ele-block">
+          <label class="small-text label" for="lon">Longitude:</label>
+          <div class="input-container">
+            <input
+              placeholder="Longitude"
+              class="form-input"
+              formControlName="lon"
+              type="text"
+              readonly
+              id="lon"
+            />
+          </div>
+        </div>
       </div>
       <div class="ele-container">
         <button (click)="navigateToLunch()" class="primary-btn">

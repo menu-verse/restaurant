@@ -1,5 +1,13 @@
 <div class="component ord-menu">
   <div class="content">
+    <app-toast
+      *ngIf="showToast"
+      [callback]="onToastClosed"
+      [message]="
+        'Your Restaurant is create, you will be directed to dashboard page in few seconds!'
+      "
+      [duration]="3000"
+    ></app-toast>
     <div class="top-section">
       <button class="primary-btn" (click)="saveOrdinaryMenu()">Publish</button>
     </div>

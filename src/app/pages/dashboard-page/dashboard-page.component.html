@@ -2,7 +2,7 @@
   <app-header></app-header>
   <main class="main" [class.center]="center">
     <mat-spinner color="#94486c" *ngIf="loading"></mat-spinner>
-    <app-empty-res *ngIf="restaurants.length === 0"></app-empty-res>
+    <app-empty-res *ngIf="!loading && restaurants.length === 0"></app-empty-res>
     <app-list-res
       *ngIf="restaurants.length > 0"
       [restaurants]="restaurants"
