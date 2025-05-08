@@ -2,13 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root',
 })
 export class HttpService {
-  ROOT_PATH = 'http://localhost:4502/api/v1/';
+  ROOT_PATH = environment.apiUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    console.log(this.ROOT_PATH, environment);
+  }
 
   get(url: string): Observable<any> {
     return this.http.get(this.ROOT_PATH + url, { withCredentials: true });
