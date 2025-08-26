@@ -27,7 +27,10 @@ export class DashboardPageComponent implements OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-    this.httpService.get('restaurant/all').subscribe((data: any) => {
+    const url = `restaurant/all?sessionID=${localStorage.getItem(
+      'session-id'
+    )}`;
+    this.httpService.get(url).subscribe((data: any) => {
       this.loading = false;
       this.restaurants = data;
       if (this.restaurants.length > 0) {
