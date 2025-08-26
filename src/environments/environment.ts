@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://server-production-7765.up.railway.app/api/v1/',
+  apiUrl: 'https://menuverse-server-f09476c8d519.herokuapp.com/api/v1/',
 };
