@@ -81,7 +81,7 @@ export class CreateRestaurantComponent implements OnChanges {
   }
 
   navigateToLunch() {
-    const hasQueryParams = this.apiUrl.indexof('?') !== -1;
+    const hasQueryParams = this.apiUrl.indexOf('?') !== -1;
     const session = `sessionID=${localStorage.getItem('sesion-id')}`;
     const url = this.apiUrl + (hasQueryParams ? `?${session}` : `&${session}`);
     this.httpService
